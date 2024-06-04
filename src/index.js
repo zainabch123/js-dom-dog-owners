@@ -33,6 +33,11 @@ function createDogList() {
   const dogContainer = document.querySelector(".main");
   const dogsList = document.querySelector(".dogs-list");
 
+  const dogs = dogsList.querySelectorAll(".dogs-list__button");
+  for (let i = 1; i < dogs.length; i++) {
+    dogs[i].remove();
+  }
+
   for (let i = 0; i < state.dogs.length; i++) {
     const li = document.createElement("li");
     li.className = "dogs-list__button";
