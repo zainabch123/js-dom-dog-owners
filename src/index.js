@@ -61,12 +61,12 @@ function createDogCard(selectedDog) {
   createDogHeading(selectedDog);
   createDogImage(selectedDog);
   createDogDescription(selectedDog);
-  createIsNaughty();
+  createIsNaughty(selectedDog);
   createGoodDogButton();
   dogCard.appendChild(createDogHeading(selectedDog));
   dogCard.appendChild(createDogImage(selectedDog));
   dogCard.appendChild(createDogDescription(selectedDog));
-  dogCard.appendChild(createIsNaughty());
+  dogCard.appendChild(createIsNaughty(selectedDog));
   dogCard.appendChild(createGoodDogButton());
   return dogCard;
 }
@@ -100,10 +100,20 @@ function createDogDescription(selectedDog) {
   return dogDescription;
 }
 
-function createIsNaughty() {
-  const isNaughty = document.createElement("p");
-  isNaughty.innerHTML = "<em>Is Naughty? </em>   Yes!";
-  return isNaughty;
+function createIsNaughty(selectedDog) {
+  let isNaughty = selectedDog.isGoodDog;
+  let isNaughtyAnswer;
+
+  if (isNaughty === true) {
+    isNaughtyAnswer = "No!";
+  } else {
+    isNaughtyAnswer = "Yes!";
+  }
+
+  const naughtyQandA = document.createElement("p");
+  naughtyQandA.innerHTML = "<em>Is Naughty?<em> " + isNaughtyAnswer;
+
+  return naughtyQandA;
 }
 
 function createGoodDogButton() {
